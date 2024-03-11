@@ -33,7 +33,7 @@ jobs:
           path: build/libs
 
       - name: Webhook Notification
-        uses: distributhor/workflow-webhook@v1
+        uses: distributhor/workflow-webhook@v3
         env:
           webhook_type: 'json-extended'
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
