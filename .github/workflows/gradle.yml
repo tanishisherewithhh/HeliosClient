@@ -44,8 +44,8 @@ jobs:
       - name: Send Discord Notification
         run: node ./discordWebhook.js
         env:
+            DISCORD_WEBHOOK: ${{ secret.DISCORD_WEBHOOK }}
             GITHUB_SHA: ${{ github.sha }}
             GITHUB_RUN_NUMBER: ${{ github.run_number }}
-            GITHUB_REPOSITORY: ${{ github.repository }}
-            DISCORD_WEBHOOK: ${{ secret.DISCORD_WEBHOOK }}
+            GITHUB_REPOSITORY: ${{ github.repository }}        
 
