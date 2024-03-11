@@ -40,7 +40,7 @@ fetch(webhookURL, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${secret}`
+    'Authorization': `Bearer ${webhookURL}`
   },
   body: JSON.stringify(data)
 })
