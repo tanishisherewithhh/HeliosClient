@@ -21,18 +21,6 @@ jobs:
         with:
           java-version: '17'
 
-      - name: Build File
-        run: |
-          chmod +x gradlew 
-          ./gradlew build
-
-      - name: Upload File
-        uses: actions/upload-artifact@v3
-        with:
-          name: HeliosClient
-          path: build/libs
-
-          
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -52,6 +40,18 @@ jobs:
            if [ ! -d "node_modules" ]; then
              npm install axios
            fi
+
+
+      - name: Build File
+        run: |
+          chmod +x gradlew 
+          ./gradlew build
+
+      - name: Upload File
+        uses: actions/upload-artifact@v3
+        with:
+          name: HeliosClient
+          path: build/libs
 
       - name: Build fail Notification
         if: ${{ failure() }}
