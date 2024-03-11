@@ -48,11 +48,13 @@ function sendBuildStatus(status) {
     }
   };
 
-  axios.post(webhookURL, data)
-    .then(response => console.log(response.data))
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+  axios.post(webhookURL, {
+  embeds: [data.embeds] // send the embeds as an array
+})
+.then(response => console.log(response.data))
+.catch((error) => {
+  console.error('Error:', error);
+});
 }
 
 // Call the function with the build status
