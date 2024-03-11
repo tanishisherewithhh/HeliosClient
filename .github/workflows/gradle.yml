@@ -39,7 +39,7 @@ jobs:
              node-version: '14'
 
       - name: Install Dependencies
-        run: npm install node-fetch@2.6.6
+        run: npm install axios
 
       - name: Send Discord Notification
         run: node .github/discordWebhook.js
