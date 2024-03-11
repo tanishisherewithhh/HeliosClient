@@ -40,8 +40,7 @@ jobs:
               DISCORD_USERNAME: "HeliosClient"
               DISCORD_EMBEDS:  >   
                {
-              
-                 "embeds": [
+                 "embed": [
                 {
                   "title": "Build Successful",
                   "description": "The build of the project was successful. Here are some details...",
