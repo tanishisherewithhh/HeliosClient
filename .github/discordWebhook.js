@@ -40,8 +40,8 @@ fetch(webhookURL, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${webhookURL}`
   },
+  name: "HeliosClient",
   body: JSON.stringify(data)
 })
 .then(response => response.json())
