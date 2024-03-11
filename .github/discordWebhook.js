@@ -34,7 +34,6 @@ const data = {
         }
       ]
     }
-  ]
 };
 
 fetch(webhookURL, {
