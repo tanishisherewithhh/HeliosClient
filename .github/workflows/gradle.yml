@@ -41,7 +41,7 @@ jobs:
       - name: Install Dependencies
         run: npm install axios
 
-      - name: Build fail
+      - name: Build fail Notification
         if: ${{ failure() }}
         run: node .github/discordWebhook.js failure
         env:
@@ -51,7 +51,7 @@ jobs:
             GITHUB_REPOSITORY: ${{ github.repository }}        
             PUSH_USER: ${{ github.actor }}  
             
-      - name: Build success
+      - name: Build success Notification
         if: ${{ success() }}
         run: node .github/discordWebhook.js success
         env:
