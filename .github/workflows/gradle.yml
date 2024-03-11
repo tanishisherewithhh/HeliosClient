@@ -32,33 +32,12 @@ jobs:
           name: HeliosClient
           path: build/libs
 
-      - name: Discord notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          DISCORD_USERNAME: HeliosClient
-          DISCORD_EMBEDS: >
-           {
-              "content": "Hello, this is a message from my GitHub Actions workflow!",
-              "embeds": [
-                {
-                  "title": "Build Successful",
-                  "description": "The build of the project was successful. Here are some details...",
-                  "color": 3066993,
-                  "fields": [
-                    {
-                      "name": "Branch",
-                      "value": "${{ github.ref }}",
-                      "inline": true
-                    },
-                    {
-                      "name": "Commit",
-                      "value": "${{ github.sha }}",
-                      "inline": true
-                    }
-                  ]
-                }
-              ]
-            }
-        uses: Ilshidur/action-discord@master
-        with: 
-          args: 'A new commit has been pushed to Ilshidur/action-discord.'
+    - name: Discord Notification
+        uses: appleboy/discord-action@master
+        with:
+          webhook_id: ${{ secrets.DISCORD_WEBHOOK_ID }}
+          webhook_token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
+          color: 3066993
+          title: "Build Successful"
+          description: "The build of the project was successful. Here are some details..."
+          fields: '[{"name": "Branch", "value": "${{ github.ref }}", "inline": true}, {"name": "Commit", "value": "${{ github.sha }}", "inline": true}]'
