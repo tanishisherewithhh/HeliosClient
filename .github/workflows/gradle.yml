@@ -31,3 +31,32 @@ jobs:
         with:
           name: HeliosClient
           path: build/libs
+
+      - name: Webhook Notification
+        uses: distributhor/workflow-webhook@v3
+        env:
+          webhook_type: 'json-extended'
+          webhook_url: ${{ secrets.DEV_BUILDS }}
+          data: >
+            {
+              "content": "Hello, this is a message from my GitHub Actions workflow!",
+              "embeds": [
+                {
+                  "title": "Build Successful",
+                  "description": "The build of the project was successful. Here are some details...",
+                  "color": 3066993,
+                  "fields": [
+                    {
+                      "name": "Branch",
+                      "value": "${{ github.ref }}",
+                      "inline": true
+                    },
+                    {
+                      "name": "Commit",
+                      "value": "${{ github.sha }}",
+                      "inline": true
+                    }
+                  ]
+                }
+              ]
+            }
