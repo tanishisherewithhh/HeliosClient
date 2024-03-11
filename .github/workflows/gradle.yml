@@ -33,25 +33,19 @@ jobs:
           path: build/libs
 
           
-      - name: Discord notification
-        uses: Ilshidur/action-discord@master
-        env:
-              DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-              DISCORD_USERNAME: "HeliosClient"
-              DISCORD_EMBEDS:  >
-                   {
-                     "embeds": [
-                      {
-                        "title": "Meow!",
-                        "color": 1127128
-                      },
-                      {
-                        "title": "Meow-meow!",
-                         "color": 14177041
-                     }
-                      ]
-                   }
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+             node-version: '14'
 
-            
-        with:    
-            args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
+      - name: Install Dependencies
+        run: npm install node-fetch
+
+      - name: Send Discord Notification
+        run: node ./discordWebhook.js
+        env:
+            GITHUB_SHA: ${{ github.sha }}
+            GITHUB_RUN_NUMBER: ${{ github.run_number }}
+            GITHUB_REPOSITORY: ${{ github.repository }}
+            DISCORD_WEBHOOK: ${{ secret.DISCORD_WEBHOOK }}
+
