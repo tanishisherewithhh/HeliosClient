@@ -38,27 +38,20 @@ jobs:
         env:
               DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
               DISCORD_USERNAME: "HeliosClient"
-              DISCORD_EMBEDS:  >   
-               {
-                 "embed": [
-                {
-                  "title": "Build Successful",
-                  "description": "The build of the project was successful. Here are some details...",
-                  "color": 3066993,
-                  "fields": [
-                     {
-                      "name": "Branch",
-                      "value": "${{ github.ref }}",
-                      "inline": true
-                     },
-                     {
-                      "name": "Commit",
-                      "value": "${{ github.sha }}",
-                      "inline": true
+              DISCORD_EMBEDS:  >
+                   {
+                     "embeds": [
+                      {
+                        "title": "Meow!",
+                        "color": 1127128
+                      },
+                      {
+                        "title": "Meow-meow!",
+                         "color": 14177041
                      }
-                   ]
-                 }
-                ]
-               }
+                      ]
+                   }
+
+            
         with:    
             args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
