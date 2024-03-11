@@ -45,7 +45,7 @@ function sendBuildStatus(status) {
         },
         {
           name: 'Build Output',
-          value: `[Build link](${buildOutput})`,
+          value: `[Build](${buildOutput})`,
           inline: true
         }
       ],
@@ -53,13 +53,12 @@ function sendBuildStatus(status) {
         text: 'From Github Actions',
       },
       timestamp: new Date().toISOString()
-    },
-   avatar_url: "https://media.discordapp.net/attachments/1216707490570309744/1216798445684264990/icon.png?ex=6601b2dc&is=65ef3ddc&hm=6937eb0df5b51988369fd611ed5ee55c48ef2f906fba8caf572f7d0ea0a29c3f&=&format=webp&quality=lossless"
+    }
   };
 
   axios.post(webhookURL, {
-  avatar_url: data.avatar_url,
-  name: "HeliosClient",
+  username: `HeliosClient`,
+  avatar_url: `https://media.discordapp.net/attachments/1216707490570309744/1216798445684264990/icon.png?ex=6601b2dc&is=65ef3ddc&hm=6937eb0df5b51988369fd611ed5ee55c48ef2f906fba8caf572f7d0ea0a29c3f&=&format=webp&quality=lossless`,
   embeds: [data.embeds] // send the embeds as an array
 })
 .then(response => console.log(response.data))
