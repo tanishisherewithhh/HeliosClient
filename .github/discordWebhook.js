@@ -38,9 +38,6 @@ const data = {
 
 fetch(webhookURL, {
   method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
   name: "HeliosClient",
   body: JSON.stringify(data)
 })
