@@ -42,7 +42,7 @@ jobs:
         run: npm install node-fetch
 
       - name: Send Discord Notification
-        run: node .github/workflows/discordWebhook.js
+        run: node .github/discordWebhook.js
         env:
             DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
             GITHUB_SHA: ${{ github.sha }}
