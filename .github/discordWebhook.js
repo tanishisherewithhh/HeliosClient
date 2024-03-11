@@ -1,10 +1,9 @@
 const fetch = require('node-fetch');
 
-const webhookURL = 'your-webhook-url';
+const webhookURL = process.env.DISCORD_WEBHOOK;
 const commit = process.env.GITHUB_SHA;
 const runNumber = process.env.GITHUB_RUN_NUMBER;
 const repoName = process.env.GITHUB_REPOSITORY;
-const buildOutputLink = 'your-build-output-link'; // Replace with your actual build output link
 
 const data = {
   embeds: 
@@ -30,7 +29,7 @@ const data = {
         },
         {
           name: 'Build Output',
-          value: `[Link`,
+          value: "https://github.com/tanishisherewithhh/HeliosClient/.github/workflows/gradle.yml",
           inline: true
         }
       ]
