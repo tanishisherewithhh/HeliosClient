@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/ccheckout@v2
       - name: Set up JDK 17
         uses: actions/setup-java@v1
         with:
@@ -36,7 +36,7 @@ jobs:
         uses: distributhor/workflow-webhook@v3
         env:
           webhook_type: 'json-extended'
-          webhook_url: ${{ secrets.DEV_BUILDS }}
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           data: >
             {
               "content": "Hello, this is a message from my GitHub Actions workflow!",
