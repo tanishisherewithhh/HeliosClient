@@ -40,7 +40,7 @@ jobs:
               DISCORD_USERNAME: "HeliosClient"
               DISCORD_EMBEDS:  >   
                {
-                 "content": "Hello, this is a message from my GitHub Actions workflow!",
+              
                  "embeds": [
                 {
                   "title": "Build Successful",
