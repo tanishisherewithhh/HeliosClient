@@ -40,4 +40,26 @@ jobs:
           color: 3066993
           title: "Build Successful"
           description: "The build of the project was successful. Here are some details..."
-          fields: '[{"name": "Branch", "value": "${{ github.ref }}", "inline": true}, {"name": "Commit", "value": "${{ github.sha }}", "inline": true}]'
+          message: >   
+               {
+                 "content": "Hello, this is a message from my GitHub Actions workflow!",
+                 "embeds": [
+                {
+                  "title": "Build Successful",
+                  "description": "The build of the project was successful. Here are some details...",
+                  "color": 3066993,
+                  "fields": [
+                     {
+                      "name": "Branch",
+                      "value": "${{ github.ref }}",
+                      "inline": true
+                     },
+                     {
+                      "name": "Commit",
+                      "value": "${{ github.sha }}",
+                      "inline": true
+                     }
+                   ]
+                 }
+                ]
+               }
