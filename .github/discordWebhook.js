@@ -43,7 +43,7 @@ function sendBuildStatus(status) {
         },
         {
           name: 'Build Output',
-          value: `[Output](https://github.com/tanishisherewithhh/HeliosClient/actions/runs/${runId})`,
+          value: `[Output](https://github.com/tanishisherewithhh/HeliosClient/actions/runs/${runID})`,
           inline: true
         }
       ]
