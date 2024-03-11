@@ -18,7 +18,7 @@ function sendBuildStatus(status) {
     title = 'Build Failed';
     description = 'The latest build of the project failed. Details...';
     color = 15158332; // red
-    buildOutput = `null`;
+    buildOutput = `https://github.com/tanishisherewithhh/HeliosClient/actions`;
   }
   const shortCommit = commit.substring(0, 7);
   const data = {
