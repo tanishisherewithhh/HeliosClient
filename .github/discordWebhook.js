@@ -5,6 +5,8 @@ const commit = process.env.GITHUB_SHA;
 const runNumber = process.env.GITHUB_RUN_NUMBER;
 const repoName = process.env.GITHUB_REPOSITORY;
 const pushUser = process.env.PUSH_USER;
+const runID = process.env.RUN_ID;
+
 
 function sendBuildStatus(status) {
   let title, description, color;
@@ -31,7 +33,7 @@ function sendBuildStatus(status) {
         },
         {
           name: 'Commit',
-          value: '[Here](https://github.com/${repoName}/commit/${commit})',
+          value: `[Here](https://github.com/${repoName}/commit/${commit})`,
           inline: true
         },
         {
@@ -41,7 +43,7 @@ function sendBuildStatus(status) {
         },
         {
           name: 'Build Output',
-          value: '[Output](https://github.com/tanishisherewithhh/HeliosClient/.github/workflows/gradle.yml)',
+          value: `[Output](https://github.com/tanishisherewithhh/HeliosClient/actions/runs/${runId})`,
           inline: true
         }
       ]
