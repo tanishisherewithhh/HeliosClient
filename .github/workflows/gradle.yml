@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/ccheckout@v2
+      - uses: actions/checkout@v2
       - name: Set up JDK 17
         uses: actions/setup-java@v1
         with:
@@ -33,7 +33,7 @@ jobs:
           path: build/libs
 
       - name: Webhook Notification
-        uses: distributhor/workflow-webhook@v3
+        uses: distributhor/workflow-webhook@v1
         env:
           webhook_type: 'json-extended'
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
