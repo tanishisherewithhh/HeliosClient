@@ -50,7 +50,7 @@ jobs:
       - name: Install Dependencies
         run: |
            if [ ! -d "node_modules" ]; then
-             npm install
+             npm install axios
            fi
 
       - name: Build fail Notification
