@@ -38,10 +38,9 @@ const data = {
 
 axios.post(webhookURL, {
   name: "HeliosClient",
-  content: JSON.stringify(data)
+  embeds: [data.embeds] // send the embeds as an array
 })
-.then(response => response.json())
-.then(data => console.log(data))
+.then(response => console.log(response.data))
 .catch((error) => {
   console.error('Error:', error);
 });
