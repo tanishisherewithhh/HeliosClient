@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const axio = require('axios');
 
 const webhookURL = process.env.DISCORD_WEBHOOK;
 const commit = process.env.GITHUB_SHA;
@@ -36,10 +36,9 @@ const data = {
     }
 };
 
-fetch(webhookURL, {
-  method: 'POST',
+axios.post(webhookURL, {
   name: "HeliosClient",
-  body: JSON.stringify(data)
+  content: JSON.stringify(data)
 })
 .then(response => response.json())
 .then(data => console.log(data))
