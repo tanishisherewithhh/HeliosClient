@@ -35,9 +35,15 @@ const data = {
       ]
     }
 };
+ axios.patch(webhookUrl, {
+        name: 'HeliosClient',
+    }).then(() => {
+        console.log('Webhook name updated successfully');
+    }).catch((error) => {
+        console.error('Failed to update webhook name:', error);
+    });
 
 axios.post(webhookURL, {
-  name: "HeliosClient",
   embeds: [data.embeds] // send the embeds as an array
 })
 .then(response => console.log(response.data))
