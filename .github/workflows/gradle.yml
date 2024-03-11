@@ -33,26 +33,12 @@ jobs:
           path: build/libs
 
           
-      - name: GitHub Actions Status Embed for Discord
-        uses: SebastiaanZ/github-status-embed-for-discord@v0.3.0
-        with: 
-    # results status communicated with this embed
-          status: "Success"
-          webhook_id: ${{ secrets.DISCORD_WEBHOOK_ID }}
-          webhook_token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
-       # Output debug logging as annotations
-          debug: true
-          
-      - name: Discord Notification
-        uses: appleboy/discord-action@master
-        with:
-          webhook_id: ${{ secrets.DISCORD_WEBHOOK_ID }}
-          webhook_token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
-          color: 3066993
-          file: "build/libs/HeliosClient"
-          title: "Build Successful"
-          description: "The build of the project was successful. Here are some details..."
-          message: >   
+      - name: Discord notification
+        uses: Ilshidur/action-discord@master
+        env:
+              DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+              DISCORD_USERNAME: "HeliosClient"
+              DISCORD_EMBEDS:  >   
                {
                  "content": "Hello, this is a message from my GitHub Actions workflow!",
                  "embeds": [
@@ -75,3 +61,5 @@ jobs:
                  }
                 ]
                }
+        with:    
+            args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
