@@ -45,7 +45,7 @@ function sendBuildStatus(status) {
           inline: true
         }
       ]
-    }]
+    }
   };
 
   axios.post(webhookURL, data)
