@@ -1,4 +1,4 @@
-const axio = require('axios');
+const axios = require('axios');
 
 const webhookURL = process.env.DISCORD_WEBHOOK;
 const commit = process.env.GITHUB_SHA;
