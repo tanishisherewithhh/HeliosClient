@@ -41,11 +41,23 @@ jobs:
       - name: Install Dependencies
         run: npm install axios
 
-      - name: Send Discord Notification
-        run: node .github/discordWebhook.js
+      - name: Build fail
+        if: ${{ failure() }}
+        run: node .github/discordWebhook.js failure
         env:
             DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
             GITHUB_SHA: ${{ github.sha }}
             GITHUB_RUN_NUMBER: ${{ github.run_number }}
             GITHUB_REPOSITORY: ${{ github.repository }}        
+            PUSH_USER: ${{ github.actor }}  
+            
+      - name: Build success
+        if: ${{ success() }}
+        run: node .github/discordWebhook.js success
+        env:
+            DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+            GITHUB_SHA: ${{ github.sha }}
+            GITHUB_RUN_NUMBER: ${{ github.run_number }}
+            GITHUB_REPOSITORY: ${{ github.repository }}        
+            PUSH_USER: ${{ github.actor }}  
 
